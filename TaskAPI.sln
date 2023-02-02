@@ -5,6 +5,10 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskAPI", "TaskAPI\TaskAPI.csproj", "{83793CBD-AFE0-4F57-9C92-AB6CB20084A6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{B391ADAC-83CE-4FA0-A775-E66259AD9609}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackendData", "Data\BackendData\BackendData.csproj", "{7BF730D6-EDD0-48F3-ABC6-C5F5804DC8B9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +19,16 @@ Global
 		{83793CBD-AFE0-4F57-9C92-AB6CB20084A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83793CBD-AFE0-4F57-9C92-AB6CB20084A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{83793CBD-AFE0-4F57-9C92-AB6CB20084A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BF730D6-EDD0-48F3-ABC6-C5F5804DC8B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BF730D6-EDD0-48F3-ABC6-C5F5804DC8B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BF730D6-EDD0-48F3-ABC6-C5F5804DC8B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BF730D6-EDD0-48F3-ABC6-C5F5804DC8B9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7BF730D6-EDD0-48F3-ABC6-C5F5804DC8B9} = {B391ADAC-83CE-4FA0-A775-E66259AD9609}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5A6C769C-D1F2-481A-A7B6-B6AE999157BE}
