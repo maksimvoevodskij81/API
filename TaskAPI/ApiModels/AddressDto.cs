@@ -2,7 +2,7 @@
 {
     public class AddressDto
     {
-        public int? AddressId { get; private set; }
+        public int? Id { get; private set; }
         public string? City { get; set; }
         public string? ZipCode { get; set; }
         public string? Country { get; set; }
@@ -13,13 +13,13 @@
         {
 
         }
-        public AddressDto(int addressId, string city, string zipCode, string country, string street, int houseNumber)
+        public AddressDto(int addressId, string country, string city, string street, int houseNumber, string zipCode)
         {
-            AddressId= addressId;
-            City= city;
-            ZipCode= zipCode;
-            Country= country;
-            Street= street;
+            Id = addressId;
+            City = city;
+            ZipCode = zipCode;
+            Country = country;
+            Street = street;
             HouseNumber = houseNumber;
         }
 
