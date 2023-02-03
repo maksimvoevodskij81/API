@@ -16,7 +16,7 @@ public class AddressService : IAddressService
 		_addressRepository = addressRepository;
 	}
 
-	public AddressResponse CreateAndSaveAddress(AddressCreateRequest newAddress)
+	public async Task<AddressResponse> CreateAndSaveAddress(AddressCreateRequest newAddress)
 	{
 		var address = new Address
 		{
@@ -27,7 +27,7 @@ public class AddressService : IAddressService
 			ZipCode = newAddress.ZipCode
 		};
 
-		  _addressRepository.AddAsync(address);
+		 await _addressRepository.AddAsync(address);
 		return new AddressResponse(address.Id, address.Country!, address.City!, address.Street!, address.HouseNumber!.Value, address.ZipCode!);
 	}
 

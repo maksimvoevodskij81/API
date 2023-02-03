@@ -7,7 +7,6 @@ using TaskAPI.Interfaces;
 
 namespace TaskAPI.Controllers.V1
 {
-
     public class AddressesController : ControllerBase
     {
         private readonly IAddressService _addressService;

@@ -7,7 +7,7 @@ namespace TaskAPI.Interfaces;
 
 public interface IAddressService
 {
-	AddressResponse CreateAndSaveAddress(AddressCreateRequest address);
+	Task<AddressResponse> CreateAndSaveAddress(AddressCreateRequest address);
 	Task<Address> GetAddressByIdAsync(int addressId);
 	Task<IReadOnlyList<Address>> RetrieveAllAddress();
 	Task<bool> UpdateAddressAsync(AddressUpdateRequest address, int addressId);
