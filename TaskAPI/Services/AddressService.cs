@@ -28,7 +28,7 @@ public class AddressService : IAddressService
 		};
 
 		 await _addressRepository.AddAsync(address);
-		return new AddressResponse(address.Id, address.Country!, address.City!, address.Street!, address.HouseNumber!.Value, address.ZipCode!);
+		return new AddressResponse(address.Id, address.Country!, address.City!, address.Street!, address.HouseNumber!, address.ZipCode!);
 	}
 
 	public async Task<IReadOnlyList<Address>> RetrieveAllAddress()

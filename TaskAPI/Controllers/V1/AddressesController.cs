@@ -35,6 +35,8 @@ namespace TaskAPI.Controllers.V1
         public ActionResult Create([FromBody] AddressCreateRequest addressRequest)
         {
             var addressResponse = _addressService.CreateAndSaveAddress(addressRequest);
+            if (addressResponse is null)
+                return BadRequest(new { error = "Unable to create address" });
             var baseUrl = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host.ToUriComponent()}";
             var locationUri = baseUrl + "/" + ApiRouts.Addresses.Get.Replace("{addressId}", addressResponse.Id.ToString()) ;
             return Created(locationUri, addressResponse);

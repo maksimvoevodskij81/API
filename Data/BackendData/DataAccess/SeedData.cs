@@ -12,7 +12,6 @@ namespace BackendData.DataAccess
         public static List<Address> Addresses()
         {
             int id = 1;
-            int number = 11;
 
             var addresses = new List<Address>()
             {
@@ -23,7 +22,7 @@ namespace BackendData.DataAccess
                     City = "IJmuiden",
                     Street = "Plain1945",
                     ZipCode = "1971GL",
-                    HouseNumber = number ++
+                    HouseNumber = "45"
 
                 },
                 new Address
@@ -33,7 +32,7 @@ namespace BackendData.DataAccess
                     City = "Haarlem",
                     ZipCode = "2031BJ",
                     Street = "Hendrik Figeeweg",
-                    HouseNumber = number ++
+                    HouseNumber = "78"
                 }
             };
 

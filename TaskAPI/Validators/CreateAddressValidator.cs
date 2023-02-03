@@ -1,0 +1,34 @@
+﻿using FluentValidation;
+using FluentValidation.Validators;
+using TaskAPI.Contracts.V1.Requests;
+
+namespace TaskAPI.Validators
+{
+    public class CreateAddressValidator : AbstractValidator<AddressCreateRequest>
+    {
+        public CreateAddressValidator()
+        {
+            RuleFor(address => address.Country)
+                .NotEmpty()
+                .Matches("^[a-zA-Z0-9]*$")
+                .MinimumLength(2);
+            RuleFor(address => address.City)
+                .NotEmpty()
+                .Matches("^[a-zA-Z0-9]*$")
+                .MinimumLength(3);
+            RuleFor(address => address.Street)
+               .NotEmpty()
+               .Matches("^[a-zA-Z0-9]*$")
+               .MinimumLength(3);
+            RuleFor(address => address.ZipCode)
+                .NotEmpty()
+                .Matches("^[a-zA-Z0-9]*$")
+                .MinimumLength(6)
+                .MaximumLength(6);
+            RuleFor(address => address.HouseNumber)
+                .NotEmpty()
+                .Matches("^[a-zA-Z0-9]*$")
+                .MaximumLength(6);
+        }
+    }
+}

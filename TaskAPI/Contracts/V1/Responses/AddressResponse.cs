@@ -11,12 +11,12 @@ namespace TaskAPI.Contracts.V1.Responses
         public string? ZipCode { get; set; }
         public string? Country { get; set; }
         public string? Street { get; set; }
-        public int? HouseNumber { get; set; }
+        public string? HouseNumber { get; set; }
         public AddressResponse()
         {
 
         }
-        public AddressResponse(int addressId, string country, string city, string street, int houseNumber, string zipCode)
+        public AddressResponse(int addressId, string country, string city, string street, string houseNumber, string zipCode)
         {
             Id = addressId;
             City = city;
