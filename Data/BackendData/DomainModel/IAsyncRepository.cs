@@ -6,7 +6,7 @@ public interface IAsyncRepository<T> where T : BaseEntity
 {
     Task<T> GetByIdAsync(int id);
 
-    Task<IReadOnlyList<T>> ListAllAsync();
+    Task<IReadOnlyList<T>> ListAllAsync(PaginationFilter? paginationFilter = null);
 
     Task<T> AddAsync(T entity);
 

@@ -1,8 +1,11 @@
 ﻿using AutoMapper;
+using BackendData.DomainModel;
 using Microsoft.AspNetCore.Mvc;
 using TaskAPI.Contracts.V1;
 using TaskAPI.Contracts.V1.Requests;
+using TaskAPI.Contracts.V1.Requests.Query;
 using TaskAPI.Contracts.V1.Responses;
+using TaskAPI.Helpers;
 using TaskAPI.Interfaces;
 
 namespace TaskAPI.Controllers.V1
@@ -12,11 +15,13 @@ namespace TaskAPI.Controllers.V1
     {
         private readonly IAddressService _addressService;
         private readonly IMapper _mapper;
+        private readonly IUriService _uriService;
 
-        public AddressesController(IAddressService authorService, IMapper mapper)
+        public AddressesController(IAddressService authorService, IMapper mapper, IUriService uriService)
         {
             _addressService = authorService;
             _mapper = mapper;   
+            _uriService = uriService;
         }
 
 
@@ -35,7 +40,7 @@ namespace TaskAPI.Controllers.V1
             if (address is null)
                 return NotFound();
       
-            return Ok(_mapper.Map<AddressResponse>(address));
+            return Ok(new Response<AddressResponse>(_mapper.Map<AddressResponse>(address)));
         }
 
 
@@ -44,10 +49,18 @@ namespace TaskAPI.Controllers.V1
         /// </summary>
         /// <response code="200">Retreive all Addresses from database</response>
         [HttpGet(ApiRouts.Addresses.GetAll)]
-        public async Task<IActionResult> GetAllAddressAsync()
+        public async Task<IActionResult> GetAllAddressAsync([FromQuery]PaginationQuery paginationQuery)
         {
-           var addresses = await _addressService.RetrieveAllAddress();
-            return Ok(_mapper.Map<List<AddressResponse>>(addresses));
+           var paginationFilter = _mapper.Map<PaginationFilter>(paginationQuery);
+           var addresses = await _addressService.RetrieveAllAddress(paginationFilter);
+           var addressResponse = _mapper.Map<List<AddressResponse>>(addresses);
+            if (paginationFilter == null || paginationFilter.PageNumber < 1 || paginationFilter.PageSize < 1)
+            {
+                return Ok(new PageResponse<AddressResponse>(addressResponse));
+            }
+            var paginationResponse = PaginationHelper<AddressResponse>
+                .CreatePaginatedResponse(_uriService, paginationFilter, addressResponse);
+            return Ok(paginationResponse);
         }
 
 
@@ -69,9 +82,8 @@ namespace TaskAPI.Controllers.V1
                 return BadRequest(new ErrorResponse{Errors = new List<ErrorModel> 
                 { new ErrorModel { Message = "Unable to create address" } } });
 
-            var baseUrl = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host.ToUriComponent()}";
-            var locationUri = baseUrl + "/" + ApiRouts.Addresses.Get.Replace("{addressId}", address.Id.ToString());
-            return Created(locationUri, _mapper.Map<AddressResponse>(address));
+           var locationUri = _uriService.GetAddressUri(address.Id.ToString());
+           return Created(locationUri, new Response<AddressResponse>(_mapper.Map<AddressResponse>(address)));
         }
 
        

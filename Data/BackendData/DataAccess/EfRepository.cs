@@ -18,9 +18,17 @@ public class EfRepository<T> : IAsyncRepository<T> where T : BaseEntity
         return await _dbContext.Set<T>().FirstOrDefaultAsync(a => a.Id == id);
     }
 
-    public async Task<IReadOnlyList<T>> ListAllAsync()
+    public async Task<IReadOnlyList<T>> ListAllAsync(PaginationFilter? paginationFilter = null)
     {
-        return await _dbContext.Set<T>().ToListAsync();
+        if (paginationFilter == null)
+        {
+            return await _dbContext.Set<T>().ToListAsync();       
+        }
+        var skip = (paginationFilter.PageNumber - 1) * paginationFilter.PageSize;
+        return await _dbContext.Set<T>()
+            .Skip(skip)
+            .Take(paginationFilter.PageSize)
+            .ToListAsync();
     }
 
     public async Task<T> AddAsync(T entity)

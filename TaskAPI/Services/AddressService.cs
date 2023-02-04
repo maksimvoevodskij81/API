@@ -1,8 +1,6 @@
 ﻿using BackendData;
 using BackendData.DomainModel;
-using Microsoft.AspNetCore.Mvc;
 using TaskAPI.Contracts.V1.Requests;
-using TaskAPI.Contracts.V1.Responses;
 using TaskAPI.Interfaces;
 
 namespace TaskAPI.Services;
@@ -31,16 +29,14 @@ public class AddressService : IAddressService
 		return address;
 	}
 
-	public async Task<IReadOnlyList<Address>> RetrieveAllAddress()
+	public async Task<IReadOnlyList<Address>> RetrieveAllAddress(PaginationFilter? paginationFilter = null)
 	{
-		var addresses = await _addressRepository.ListAllAsync();
-		return addresses;
+	    return await _addressRepository.ListAllAsync(paginationFilter!);
 	}
 
 	public async Task<Address> GetAddressByIdAsync(int id) 
 	{
-	  var address = await _addressRepository.GetByIdAsync(id);
-		return address;
+	    return await _addressRepository.GetByIdAsync(id);
     }
 
 	public async Task<bool> UpdateAddressAsync(AddressUpdateRequest addressRequest, int addressRequstId )
@@ -53,7 +49,7 @@ public class AddressService : IAddressService
 		addressForUpdate.Street = addressRequest.Street;
 		addressForUpdate.HouseNumber = addressRequest.HouseNumber;
 		addressForUpdate.ZipCode = addressRequest.ZipCode;
-		_addressRepository.UpdateAsync(addressForUpdate);
+		await _addressRepository.UpdateAsync(addressForUpdate);
 		return true;
 	}
 
@@ -62,7 +58,7 @@ public class AddressService : IAddressService
         var addressForUpdate = await GetAddressByIdAsync(addressRequstId);
         if (addressForUpdate is null)
             return false;
-        _addressRepository.DeleteAsync(addressForUpdate);
+        await _addressRepository.DeleteAsync(addressForUpdate);
         return true;
     }
 }
