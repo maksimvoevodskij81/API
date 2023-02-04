@@ -1,5 +1,4 @@
-﻿using BackendData.DataAccess.Config;
-using BackendData.DomainModel;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using TaskAPI.Contracts.V1;
 using TaskAPI.Contracts.V1.Requests;
@@ -12,11 +11,15 @@ namespace TaskAPI.Controllers.V1
     public class AddressesController : ControllerBase
     {
         private readonly IAddressService _addressService;
+        private readonly IMapper _mapper;
 
-        public AddressesController(IAddressService authorService)
+        public AddressesController(IAddressService authorService, IMapper mapper)
         {
             _addressService = authorService;
+            _mapper = mapper;   
         }
+
+
         /// <summary>
         /// Retrieve Address by Id
         /// </summary>
@@ -28,11 +31,14 @@ namespace TaskAPI.Controllers.V1
         [HttpGet(ApiRouts.Addresses.Get)]
         public async Task<IActionResult> GetAddressByIdAsync([FromRoute] int addressId)
         {
-            var result = await _addressService.GetAddressByIdAsync(addressId);
-            if (result is null)
+            var address = await _addressService.GetAddressByIdAsync(addressId);
+            if (address is null)
                 return NotFound();
-            return Ok(result);
+      
+            return Ok(_mapper.Map<AddressResponse>(address));
         }
+
+
         /// <summary>
         /// Retreive all Addresses from database
         /// </summary>
@@ -40,8 +46,11 @@ namespace TaskAPI.Controllers.V1
         [HttpGet(ApiRouts.Addresses.GetAll)]
         public async Task<IActionResult> GetAllAddressAsync()
         {
-            return Ok(await _addressService.RetrieveAllAddress());
+           var addresses = await _addressService.RetrieveAllAddress();
+            return Ok(_mapper.Map<List<AddressResponse>>(addresses));
         }
+
+
         /// <summary>
         /// Create an address in the system
         /// </summary>
@@ -50,22 +59,22 @@ namespace TaskAPI.Controllers.V1
         /// </remarks>
         /// <response code="201">Create an address in the system</response>
         /// <response code="400">Unable to create the address due to validation error</response>
-
         [HttpPost(ApiRouts.Addresses.Create)]
         [ProducesResponseType(typeof(AddressCreateRequest), 201)]
         [ProducesResponseType(typeof(ErrorResponse), 400)]
-
-        public ActionResult Create([FromBody] AddressCreateRequest addressRequest)
+        public async Task<ActionResult> Create([FromBody] AddressCreateRequest addressRequest)
         {
-            var addressResponse = _addressService.CreateAndSaveAddress(addressRequest);
-            if (addressResponse is null)
+            var address = await _addressService.CreateAndSaveAddress(addressRequest);
+            if (address is null)
                 return BadRequest(new ErrorResponse{Errors = new List<ErrorModel> 
                 { new ErrorModel { Message = "Unable to create address" } } });
-            var baseUrl = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host.ToUriComponent()}";
-            var locationUri = baseUrl + "/" + ApiRouts.Addresses.Get.Replace("{addressId}", addressResponse.Id.ToString());
-            return Created(locationUri, addressResponse);
 
+            var baseUrl = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host.ToUriComponent()}";
+            var locationUri = baseUrl + "/" + ApiRouts.Addresses.Get.Replace("{addressId}", address.Id.ToString());
+            return Created(locationUri, _mapper.Map<AddressResponse>(address));
         }
+
+       
         /// <summary>
         /// Update the Address by Id
         /// </summary>
@@ -88,6 +97,7 @@ namespace TaskAPI.Controllers.V1
             return NoContent();
         }
 
+
         /// <summary>
         /// Delete the Address by Id
         /// </summary>
@@ -105,6 +115,5 @@ namespace TaskAPI.Controllers.V1
 
             return NotFound();
         }
-
     }
 }

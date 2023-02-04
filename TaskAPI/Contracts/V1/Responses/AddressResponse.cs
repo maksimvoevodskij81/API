@@ -12,18 +12,5 @@ namespace TaskAPI.Contracts.V1.Responses
         public string? Country { get; set; }
         public string? Street { get; set; }
         public string? HouseNumber { get; set; }
-        public AddressResponse()
-        {
-
-        }
-        public AddressResponse(int addressId, string country, string city, string street, string houseNumber, string zipCode)
-        {
-            Id = addressId;
-            City = city;
-            ZipCode = zipCode;
-            Country = country;
-            Street = street;
-            HouseNumber = houseNumber;
-        }
     }
 }
