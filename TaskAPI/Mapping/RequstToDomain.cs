@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BackendData.DomainModel;
+using TaskAPI.Contracts.V1.Requests.Queries;
 using TaskAPI.Contracts.V1.Requests.Query;
 
 namespace TaskAPI.Mapping
@@ -9,6 +10,7 @@ namespace TaskAPI.Mapping
         public RequstToDomain() 
         {
             CreateMap<PaginationQuery, PaginationFilter>();
+            CreateMap<GetAllAddressQuery, GetAllAddressFilter>();
         }
     }
 }

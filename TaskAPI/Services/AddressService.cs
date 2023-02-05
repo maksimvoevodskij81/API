@@ -1,5 +1,6 @@
 ﻿using BackendData;
 using BackendData.DomainModel;
+using System.Collections.Generic;
 using TaskAPI.Contracts.V1.Requests;
 using TaskAPI.Interfaces;
 
@@ -29,10 +30,10 @@ public class AddressService : IAddressService
 		return address;
 	}
 
-	public async Task<IReadOnlyList<Address>> RetrieveAllAddress(PaginationFilter? paginationFilter = null)
+	public async Task<IReadOnlyList<Address>> RetrieveAllAddress(string? filter = null,PaginationFilter? paginationFilter = null)
 	{
-	    return await _addressRepository.ListAllAsync(paginationFilter!);
-	}
+        return await _addressRepository.ListAllAsync(filter!, paginationFilter!);
+    }
 
 	public async Task<Address> GetAddressByIdAsync(int id) 
 	{
