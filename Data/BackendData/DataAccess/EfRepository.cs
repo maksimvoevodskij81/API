@@ -1,6 +1,5 @@
 ﻿using Azure;
 using BackendData.DomainModel;
-using BackendData.Extension;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations.Operations;
 using System.Data;
@@ -27,13 +26,18 @@ public class EfRepository<T> : IAsyncRepository<T> where T : BaseEntity
         return await _dbContext.Set<T>().FirstOrDefaultAsync(a => a.Id == id);
     }
 
-    public async Task<IReadOnlyList<T>> ListAllAsync(string? filter = null, PaginationFilter? paginationFilter = null)
+    public async Task<IReadOnlyList<T>> ListAllAsync(GetAllAddressSortFilter? sort = null, string? filter = null, PaginationFilter? paginationFilter = null)
     {
         var queryble = _dbContext.Set<T>().AsQueryable();
 
         if(filter?.Count() > 0)
             queryble = TextFilter_Strings<T>(queryble, filter);
 
+        var orderBy = String.IsNullOrWhiteSpace(sort?.ColumnId) || String.IsNullOrWhiteSpace(sort?.Sort)
+            ? "City ASC"
+            : String.Concat(sort.ColumnId, " ", sort.Sort);
+
+        // TODO: Refactor this method, try to implement that without add lib
         //var filterPropertyInfo = typeof(GetAllAddressFilter).GetProperties();
         //for (int i = 0; i < filterPropertyInfo.Length; i++)
         //{
@@ -44,11 +48,12 @@ public class EfRepository<T> : IAsyncRepository<T> where T : BaseEntity
 
 
         var skip = (paginationFilter!.PageNumber - 1) * paginationFilter!.PageSize;
-        var response = await queryble
+        return await queryble
             .Skip(skip)
             .Take(paginationFilter.PageSize)
+            .OrderBy(orderBy)
             .ToListAsync();
-        return response;
+        
     }
 
     ///TODO: Refactor this method, try to implement that without add lib

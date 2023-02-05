@@ -26,7 +26,7 @@ namespace TaskAPI.Validators
                 .MaximumLength(6);
             RuleFor(address => address.HouseNumber)
                 .NotEmpty()
-                .Matches("^[a-zA-Z0-9]*$")
+                .Matches("^[0-9]*$")
                 .MaximumLength(6);
         }
     }

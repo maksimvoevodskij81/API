@@ -11,6 +11,7 @@ namespace TaskAPI.Mapping
         {
             CreateMap<PaginationQuery, PaginationFilter>();
             CreateMap<GetAllAddressQuery, GetAllAddressFilter>();
+            CreateMap<GetAllAddressSortQuery, GetAllAddressSortFilter>();
         }
     }
 }

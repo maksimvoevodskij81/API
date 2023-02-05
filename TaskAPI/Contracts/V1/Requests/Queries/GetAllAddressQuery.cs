@@ -9,7 +9,7 @@
         }
         public GetAllAddressQuery(string filter)
         {
-            Filter = filter;
+            Filter = filter;  
         }
     }
 }

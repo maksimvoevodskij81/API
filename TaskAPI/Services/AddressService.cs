@@ -30,9 +30,9 @@ public class AddressService : IAddressService
 		return address;
 	}
 
-	public async Task<IReadOnlyList<Address>> RetrieveAllAddress(string? filter = null,PaginationFilter? paginationFilter = null)
+	public async Task<IReadOnlyList<Address>> RetrieveAllAddress(GetAllAddressSortFilter? sort = null, string? filter = null,PaginationFilter? paginationFilter = null)
 	{
-        return await _addressRepository.ListAllAsync(filter!, paginationFilter!);
+        return await _addressRepository.ListAllAsync(sort!, filter!, paginationFilter!);
     }
 
 	public async Task<Address> GetAddressByIdAsync(int id) 
