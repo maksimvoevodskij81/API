@@ -22,6 +22,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
 var swaggerOptions = new SwaggerOptions();
 app.Configuration.GetSection(nameof(SwaggerOptions)).Bind(swaggerOptions);
 app.UseSwagger(options => options.RouteTemplate = swaggerOptions.JsonRoute);

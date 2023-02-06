@@ -2,73 +2,39 @@
 using Newtonsoft.Json;
 using System.Web;
 using TaskAPI.Options;
-using System.Collections.Specialized;
+using TaskAPI.Contracts.V1.Responses;
 
 namespace TaskAPI.Services
 {
     public class GoogleDistanceMatrixApi
     {
-        public class Response
-        {
-            public string Status { get; set; }
-
-            [JsonProperty(PropertyName = "origin_addresses")]
-            public string[] OriginAddresses { get; set; }
-
-            [JsonProperty(PropertyName = "destination_addresses")]
-            public string[] DestinationAddresses { get; set; }
-
-            public Row[] Rows { get; set; }
-
-            public class Data
-            {
-                public int Value { get; set; }
-                public string Text { get; set; }
-            }
-
-            public class Element
-            {
-                public string Status { get; set; }
-                public Data Duration { get; set; }
-                public Data Distance { get; set; }
-            }
-
-            public class Row
-            {
-                public Element[] Elements { get; set; }
-            }
-        }
-
         private string Key { get; set; }
         private string Url { get; set; }
 
         private string[] OriginAddresses { get; set; }
+
         private string[] DestinationAddresses { get; set; }
-      
-        public GoogleDistanceMatrixApi(string[] originAddresses, string[] destinationAddresses)
+
+        public GoogleDistanceMatrixApi(string[] originAddresses, 
+            string[] destinationAddresses, GoogleMapSettings googleMapSettings)
         {
             OriginAddresses = originAddresses;
             DestinationAddresses = destinationAddresses;
 
-            //var appSettings = ConfigurationManager.AppSettings["GoogleDistanceMatrixApiUrl"];
+            if (string.IsNullOrEmpty(googleMapSettings.GoogleDistanceMatrixApiUrl))
+            {
+                throw new Exception("GoogleDistanceMatrixApiUrl is not set in AppSettings.");
+            }
+            Url = googleMapSettings.GoogleDistanceMatrixApiUrl;
 
-            //if (string.IsNullOrEmpty(appSettings["GoogleDistanceMatrixApiUrl"]))
-            //{
-            //    throw new Exception("GoogleDistanceMatrixApiUrl is not set in AppSettings.");
-            //}
-            //Url = appSettings["GoogleDistanceMatrixApiUrl"];
-
-            //if (string.IsNullOrEmpty(appSettings["GoogleDistanceMatrixApiKey"]))
-            //{
-            //    throw new Exception("GoogleDistanceMatrixApiKey is not set in AppSettings.");
-            //}
-            //Key = appSettings["GoogleDistanceMatrixApiKey"];
-            Key = "AIzaSyCj4eJw1o8FSzhtlFPejOiD42B7KEnNSDw";
-            Url = "https://maps.googleapis.com/maps/api/distancematrix/json";
-
+            if (string.IsNullOrEmpty(googleMapSettings.GoogleDistanceMatrixApiKey))
+            {
+                throw new Exception("GoogleDistanceMatrixApiKey is not set in AppSettings.");
+            }
+            Key = googleMapSettings.GoogleDistanceMatrixApiKey;
         }
 
-        public async Task<Response> GetResponse()
+        public async Task<DistanseCalculationResponse> GetResponse()
         {
             using (var client = new HttpClient())
             {
@@ -82,7 +48,7 @@ namespace TaskAPI.Services
                 else
                 {
                     var content = await response.Content.ReadAsStringAsync();
-                    return JsonConvert.DeserializeObject<Response>(content);
+                    return JsonConvert.DeserializeObject<DistanseCalculationResponse>(content);
                 }
             }
         }
