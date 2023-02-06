@@ -1,7 +1,5 @@
-﻿using FluentValidation.AspNetCore;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using Microsoft.OpenApi.Models;
+﻿using FluentValidation;
+using FluentValidation.AspNetCore;
 using TaskAPI.Filters;
 using TaskAPI.Interfaces;
 using TaskAPI.Services;
@@ -12,9 +10,10 @@ namespace TaskAPI.Installers
     {
         public void InstallServices(IServiceCollection services, IConfiguration configuration)
         {
-            services.AddMvc(options => options.Filters.Add<ValidationFilter>())
-                .AddFluentValidation(mvcConfiguration => mvcConfiguration.RegisterValidatorsFromAssemblyContaining<Program>());
-            
+            services.AddMvc(options => options.Filters.Add<ValidationFilter>());
+            services.AddFluentValidationAutoValidation();
+            services.AddValidatorsFromAssemblyContaining<ValidationFilter>();
+
             services.AddControllers();
            
             services.AddHttpContextAccessor();

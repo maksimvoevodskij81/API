@@ -9,6 +9,7 @@ builder.Services.InstallServicesInAssembly(builder.Configuration);
 builder.Services.AddAutoMapper(typeof(Program));
 var app = builder.Build();
 
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -28,11 +29,6 @@ app.Configuration.GetSection(nameof(SwaggerOptions)).Bind(swaggerOptions);
 app.UseSwagger(options => options.RouteTemplate = swaggerOptions.JsonRoute);
 app.UseSwaggerUI(options => options.SwaggerEndpoint(swaggerOptions.UIEndpoint, swaggerOptions.Description));
 
-
-app.UseRouting();
-
-
-app.UseAuthorization();
 
 app.MapControllers();
 
