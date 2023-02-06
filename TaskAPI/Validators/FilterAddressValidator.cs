@@ -7,7 +7,7 @@ namespace TaskAPI.Validators
     {
         public FilterAddressValidator()
         {
-            RuleFor(filter => filter.Filter)
+            RuleFor(filter => filter.Search)
                .Matches("^[a-zA-Z0-9]*$")
                .MaximumLength(10);
                

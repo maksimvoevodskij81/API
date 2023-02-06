@@ -2,14 +2,14 @@
 {
     public class GetAllAddressQuery
     { 
-        public string Filter { get; set; }
+        public string Search { get; set; }
         public GetAllAddressQuery()
         {
-            Filter= string.Empty;
+            Search= string.Empty;
         }
         public GetAllAddressQuery(string filter)
         {
-            Filter = filter;  
+            Search = filter;  
         }
     }
 }
