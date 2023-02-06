@@ -17,5 +17,9 @@
             public const string Delete = Base + "/address/{addressId}";
 
         }
+        public static class Values 
+        {
+            public const string Index = Base + "/values";
+        }
     }
 }
