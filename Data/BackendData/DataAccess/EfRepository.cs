@@ -1,13 +1,13 @@
 ﻿using Azure;
 using BackendData.DomainModel;
+using BackendData.Extansions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations.Operations;
 using System.Data;
 using System.Linq;
-using System.Linq.Dynamic.Core;
 using System.Linq.Expressions;
 using System.Reflection;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using TaskAPI.Extansions;
 
 namespace BackendData.DataAccess;
 
@@ -30,67 +30,54 @@ public class EfRepository<T> : IAsyncRepository<T> where T : BaseEntity
     {
         var queryble = _dbContext.Set<T>().AsQueryable();
 
-        if(filter?.Count() > 0)
-            queryble = TextFilter_Strings<T>(queryble, filter);
+        if (filter?.Length == 0 && paginationFilter?.PageSize == 0 && paginationFilter?.PageNumber == 0)
+            return await queryble.ToListAsync();
+
+        if (filter?.Length > 0)
+          queryble = await ApplyFilter(queryble, filter);
 
         var orderBy = String.IsNullOrWhiteSpace(sort?.ColumnId) || String.IsNullOrWhiteSpace(sort?.Sort)
             ? "City ASC"
             : String.Concat(sort.ColumnId, " ", sort.Sort);
 
-        // TODO: Refactor this method, try to implement that without add lib
-        //var filterPropertyInfo = typeof(GetAllAddressFilter).GetProperties();
-        //for (int i = 0; i < filterPropertyInfo.Length; i++)
-        //{
-        //    var predicate = CreateLamdaExpression<T>(filterPropertyInfo[i], filter!);
-        //    queryble = queryble.Where(predicate);
-        //}
-
-
-
         var skip = (paginationFilter!.PageNumber - 1) * paginationFilter!.PageSize;
+        
         return await queryble
             .Skip(skip)
             .Take(paginationFilter.PageSize)
             .OrderBy(orderBy)
             .ToListAsync();
-        
     }
-
-    ///TODO: Refactor this method, try to implement that without add lib
-    IQueryable<T> TextFilter_Strings<T>(IQueryable<T> source, string term)
+  
+    private async Task<IQueryable<T>> ApplyFilter(IQueryable<T> source, string filter)
     {
-        if (string.IsNullOrEmpty(term)) { return source; }
+        if (filter.Length == 0)
+            return source;
+         
+        filter = filter.FirstCharToUpper();
 
-        var elementType = source.ElementType;
+        var propertyInfoCollection = typeof(T).GetProperties().Where(p => p.Name != "Id").Select(p => p.Name);
+        var type = typeof(T);
+       
+        var properties = propertyInfoCollection.Select(x => type.GetProperty(x));
 
-        // Get all the string property names on this specific type.
-        var stringProperties =
-            elementType.GetProperties()
-                .Where(x => x.PropertyType == typeof(string))
-                .ToArray();
-        if (!stringProperties.Any()) { return source; }
+        var parameter = Expression.Parameter(type);
+        var leftHandSides = properties.Select(
+                x => Expression.Property(parameter, x));
 
-        // Build the string expression
-        string filterExpr = string.Join(
-            " || ",
-            stringProperties.Select(prp => $"{prp.Name}.Contains(@0)")
-        );
+        var rightHandSide = Expression.Constant(filter);
 
-        return source.Where(filterExpr, term);
+        var equalityExpressions = leftHandSides.Select(
+                x => Expression.Equal(x, rightHandSide));
+
+        var aggregatedExpressions = equalityExpressions.Aggregate(
+                (x, y) => Expression.Or(x, y));
+
+        var lambda = Expression.Lambda<Func<T, bool>>(
+                aggregatedExpressions, parameter);
+
+        return  source.Where(lambda);
     }
-
-   
-    //private Expression<Func<T, bool>> CreateLamdaExpression<T>(System.Reflection.PropertyInfo propertyInfo, string value)
-    //{
-    //    var parameterExpression = Expression.Parameter(typeof(T));
-    //    var memberExpression = Expression.PropertyOrField(parameterExpression, propertyInfo.Name);
-
-    //    var binaryExpression = Expression.Equal(memberExpression, Expression.Constant(value));
-
-    //    var lambda = Expression.Lambda<Func<T, bool>>(binaryExpression, parameterExpression);
-    //    return lambda;
-    //}
-
 
     public async Task<T> AddAsync(T entity)
     {

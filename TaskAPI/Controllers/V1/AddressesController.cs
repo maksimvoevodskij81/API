@@ -56,12 +56,8 @@ namespace TaskAPI.Controllers.V1
         {
             var paginationFilter = _mapper.Map<PaginationFilter>(paginationQuery);
             
-            var filter = string.Empty;
-            if (query?.Search.Length > 0)
-                filter = StringExtensions.FirstCharToUpper(query.Search);
-
             var sortFilter = _mapper.Map<GetAllAddressSortFilter>(sortQuery);
-            var addresses = await _addressService.RetrieveAllAddress(sortFilter, filter, paginationFilter);
+            var addresses = await _addressService.RetrieveAllAddress(sortFilter, query.Search, paginationFilter);
             var addressResponse = _mapper.Map<List<AddressResponse>>(addresses);
             if (paginationFilter == null || paginationFilter.PageNumber < 1 || paginationFilter.PageSize < 1)
             {

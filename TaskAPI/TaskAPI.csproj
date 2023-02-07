@@ -30,11 +30,6 @@
   <ItemGroup>
     <Folder Include="SwaggerExamples\Responses\" />
   </ItemGroup>
-
-  <ItemGroup>
-    <EditorConfigFiles Remove="C:\Users\Eigenaar\source\repos\TaskAPI\TaskAPI\.editorconfig" />
-  </ItemGroup>
-
   <ItemGroup>
     <None Include="C:\Users\Eigenaar\source\repos\TaskAPI\TaskAPI\.editorconfig" />
   </ItemGroup>

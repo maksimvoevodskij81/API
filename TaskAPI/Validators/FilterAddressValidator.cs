@@ -9,9 +9,8 @@ namespace TaskAPI.Validators
         {
             RuleFor(filter => filter.Search)
                .Matches("^[a-zA-Z0-9]*$")
-               .MaximumLength(10);
-               
-               
+               .MaximumLength(20);
+                 
         }
     }
 }
