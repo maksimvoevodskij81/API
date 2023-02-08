@@ -5,7 +5,7 @@
 ##### 1. TaskAPI 
 ##### 2. BackendData library
 
-* [##Technologies](#technologies)
+* [Technologies](#technologies)
 ##### Visual Studio 2022
 ##### .NET 6
 ##### SwaggerUI 
