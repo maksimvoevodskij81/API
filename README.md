@@ -15,5 +15,5 @@
 ##### Microsoft.AspNet.Mvc Version="5.2.9"
 ##### Newtonsoft.Json Version="13.0.2"
 ## Launch
-##### Clone this repository in your machine.
-##### You do not need input data cause project include data preset.(10 addresses)
+##### 1.Clone this repository in your machine.
+##### 2.You do not need input data cause project include data preset.(10 addresses)
