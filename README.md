@@ -1,4 +1,8 @@
 # TaskAPI that is REST API 
+## Table of contents
+* [General info](#general-info)
+* [Technologies](#technologies)
+* [Setup](#setup)
 ##### That is API for working(CRUD operations) with addresses and besides that for calculating distance between waypoints.
 #### Solution contains two project:
 ##### 1. TaskAPI 
@@ -16,4 +20,8 @@
 ##### Newtonsoft.Json Version="13.0.2"
 ## Launch
 ##### 1.Clone this repository in your machine.
-##### 2.You do not need input data cause project include data preset.(10 addresses)
+##### 2.You do not need input data cause project include data preset.(10 addresses) and database.sqlite file.
+##### 3.You can use Swagger UI and Postman for testing API.
+
+
+
