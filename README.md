@@ -1,6 +1,15 @@
-# TaskAPI that is REST API
+# TaskAPI that is REST API 
+##### That is API for working(CRUD operations) with addresses and besides that for calculating distance between waypoints.
+#### solution contains two project:
+##### 1. TaskAPI 
+##### 2. BackendData library
+
 ## Tools:
-#### Visual Studio 2022
-#### .NET 6
-#### SwaggerUI
-#### Database: SQLite
+##### Visual Studio 2022
+##### .NET 6
+##### SwaggerUI 
+##### Swashbuckle.AspNetCore Version="6.2.3"
+##### Database: SQLite
+##### AutoMapper Version="12.0.1"
+##### Microsoft.AspNet.Mvc Version="5.2.9"
+##### Newtonsoft.Json Version="13.0.2"
