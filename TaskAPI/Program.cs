@@ -1,4 +1,5 @@
 
+using PieApp.Models;
 using TaskAPI.Installers;
 using TaskAPI.Options;
 
@@ -31,5 +32,5 @@ app.UseSwaggerUI(options => options.SwaggerEndpoint(swaggerOptions.UIEndpoint, s
 
 
 app.MapControllers();
-
+DbInitializer.Seed(app);
 app.Run();

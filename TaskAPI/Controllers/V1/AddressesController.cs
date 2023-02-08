@@ -19,9 +19,9 @@ namespace TaskAPI.Controllers.V1
         private readonly IMapper _mapper;
         private readonly IUriService _uriService;
 
-        public AddressesController(IAddressService authorService, IMapper mapper, IUriService uriService)
+        public AddressesController(IAddressService addressService, IMapper mapper, IUriService uriService)
         {
-            _addressService = authorService;
+            _addressService = addressService;
             _mapper = mapper;
             _uriService = uriService;
         }

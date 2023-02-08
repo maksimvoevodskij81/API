@@ -10,11 +10,11 @@
 
         public static class Addresses
         {
-            public const string GetAll = Base + "/address";
-            public const string Get = Base + "/address/{addressId}";
-            public const string Create = Base + "/address";
-            public const string Update = Base + "/address/{addressId}";
-            public const string Delete = Base + "/address/{addressId}";
+            public const string GetAll = Base + "/addresses";
+            public const string Get = Base + "/addresses/{addressId}";
+            public const string Create = Base + "/addresses";
+            public const string Update = Base + "/addresses/{addressId}";
+            public const string Delete = Base + "/addresses/{addressId}";
 
         }
         public static class Values 

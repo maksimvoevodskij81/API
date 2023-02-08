@@ -1,12 +1,8 @@
-﻿using Azure;
-using BackendData.DomainModel;
+﻿using BackendData.DomainModel;
 using BackendData.Extansions;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Migrations.Operations;
 using System.Data;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Reflection;
 using TaskAPI.Extansions;
 
 namespace BackendData.DataAccess;
@@ -52,7 +48,7 @@ public class EfRepository<T> : IAsyncRepository<T> where T : BaseEntity
     private async Task<IQueryable<T>> ApplyFilter(IQueryable<T> source, string filter)
     {
         if (filter.Length == 0)
-            return source;
+            return  source;
          
         filter = filter.FirstCharToUpper();
 
