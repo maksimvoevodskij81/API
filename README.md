@@ -5,7 +5,7 @@
 ##### 1. TaskAPI 
 ##### 2. BackendData library
 
-* [Technologies](#technologies)
+* [##Technologies](#technologies)
 ##### Visual Studio 2022
 ##### .NET 6
 ##### SwaggerUI 
@@ -15,7 +15,7 @@
 ##### AutoMapper Version="12.0.1"
 ##### Microsoft.AspNet.Mvc Version="5.2.9"
 ##### Newtonsoft.Json Version="13.0.2"
-* [Setup](##setup)
+* [Setup](#setup)
 ##### 1.Clone this repository in your machine.
 ##### 2.You do not need input data cause project include data preset.(10 addresses) and database.sqlite file.
 ##### 3.You can use Swagger UI and Postman for testing API.
