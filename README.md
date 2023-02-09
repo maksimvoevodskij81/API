@@ -1,6 +1,6 @@
-  # TaskAPI that is .NET Web API 
+  # .NET Web API 
 ![Screenshot_20230209_034500](https://user-images.githubusercontent.com/61758319/217845307-674aa59e-76ef-4fc8-b429-16f8c0ab1f93.png)
-###### That is API for working(CRUD operations) with addresses and besides that for calculating distance between waypoints.
+###### That is API for working with addresses(CRUD operations) and besides that calculat distance between waypoints.
 ###### Solution contains two project:
 ###### 1. TaskAPI. 
 ###### 2. BackendData library in Data folder.
@@ -21,7 +21,7 @@
 ###### 2.You do not need input data cause project include data preset.(10 addresses) and database.sqlite file.
 ###### 3.You can use Swagger UI and Postman for testing API.
  https://localhost:7166/swagger/index.html
-* [functions](#functions)
+* [Key Features](#Key-Features)
 ###### You don't need to authorise because this function isn't ready yet.
 ![Screenshot_20230209_035901](https://user-images.githubusercontent.com/61758319/217848793-63b312fa-034b-4f44-b46a-7af5b2416062.png)
 #### Addresses controller:
@@ -36,8 +36,11 @@
 * [General info](#general-info)
 ###### Delivered endpoint documentation through a Swagger implementation.
 * [Default](#default)
- ###### sort filter = "City ASC".
+ ###### sort filter = "ASC".
 ![Screenshot_20230209_041140](https://user-images.githubusercontent.com/61758319/217852231-51ad661d-08ac-4fb7-a3bc-44c4ac296643.png)
+ ###### column filter = "City"
+ ![Screenshot_20230209_051021](https://user-images.githubusercontent.com/61758319/217870261-fb22a9fb-7ab2-4524-9d93-27bce1de6ff3.png)
+
  ###### page number = 1.
  ###### page size = 50.
 ![Screenshot_20230209_041157](https://user-images.githubusercontent.com/61758319/217852305-b7cefbdd-e8c4-43cf-ad83-074be4d174ef.png)
