@@ -1,5 +1,4 @@
 
-using PieApp.Models;
 using TaskAPI.Installers;
 using TaskAPI.Options;
 
@@ -31,7 +30,5 @@ app.Configuration.GetSection(nameof(SwaggerOptions)).Bind(swaggerOptions);
 app.UseSwagger(options => options.RouteTemplate = swaggerOptions.JsonRoute);
 app.UseSwaggerUI(options => options.SwaggerEndpoint(swaggerOptions.UIEndpoint, swaggerOptions.Description));
 
-
 app.MapControllers();
-DbInitializer.Seed(app);
 app.Run();
