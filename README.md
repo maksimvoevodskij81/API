@@ -32,6 +32,11 @@
  ###### page number 1
  ###### page size 50
  
+ * [Should be improve](#should be improve)
+ ###### Validation for requests should be more liberal so I will be able to accept all formats and just transform data to format what I exactly need that’s remain     ###### clients unbroken and still achieve data consistency.
+
+ 
+ 
 
 
 
