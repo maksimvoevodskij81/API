@@ -10,8 +10,9 @@ namespace TaskAPI.Mapping
         public RequstToDomain() 
         {
             CreateMap<PaginationQuery, PaginationFilter>();
-            CreateMap<GetAllAddressQuery, GetAllAddressFilter>();
-            CreateMap<GetAllAddressSortQuery, GetAllAddressSortFilter>();
+            CreateMap<GetAllSortQuery, GetAllSortFilter>();
+            CreateMap<GetAllSearchQuery, GetAllSearchFilter>();
+
         }
     }
 }

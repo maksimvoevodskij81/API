@@ -51,13 +51,13 @@ namespace TaskAPI.Controllers.V1
         /// </summary>
         /// <response code="200">Retreive all Addresses from database</response>
         [HttpGet(ApiRouts.Addresses.GetAll)]
-        public async Task<IActionResult> GetAllAddressAsync([FromQuery] GetAllAddressQuery query, 
-            [FromQuery] PaginationQuery paginationQuery, [FromQuery] GetAllAddressSortQuery sortQuery)
+        public async Task<IActionResult> GetAllAddressAsync([FromQuery] GetAllSearchQuery searchQuery, 
+            [FromQuery] PaginationQuery paginationQuery, [FromQuery] GetAllSortQuery sortQuery)
         {
             var paginationFilter = _mapper.Map<PaginationFilter>(paginationQuery);
-            
-            var sortFilter = _mapper.Map<GetAllAddressSortFilter>(sortQuery);
-            var addresses = await _addressService.RetrieveAllAddress(sortFilter, query.Search, paginationFilter);
+            var searchFilter = _mapper.Map<GetAllSearchFilter>(searchQuery);
+            var sortFilter = _mapper.Map<GetAllSortFilter>(sortQuery);
+            var addresses = await _addressService.RetrieveAllAddress(sortFilter, searchFilter, paginationFilter);
             var addressResponse = _mapper.Map<List<AddressResponse>>(addresses);
             if (paginationFilter == null || paginationFilter.PageNumber < 1 || paginationFilter.PageSize < 1)
             {

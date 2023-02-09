@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace BackendData.DomainModel
 {
-    public class GetAllAddressSortFilter
+    public class GetAllSearchFilter 
     {
-        public string? Sort { get; set; }
-        public string? ColumnId { get; set; }
+        public string SearchName { get; set; }
     }
+    
 }

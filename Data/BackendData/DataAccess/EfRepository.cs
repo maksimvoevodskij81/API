@@ -22,19 +22,20 @@ public class EfRepository<T> : IAsyncRepository<T> where T : BaseEntity
         return await _dbContext.Set<T>().FirstOrDefaultAsync(a => a.Id == id);
     }
 
-    public async Task<IReadOnlyList<T>> ListAllAsync(GetAllAddressSortFilter? sort = null, string? filter = null, PaginationFilter? paginationFilter = null)
+    public async Task<IReadOnlyList<T>> ListAllAsync(GetAllSortFilter? sort = null, 
+        GetAllSearchFilter? filter = null, PaginationFilter? paginationFilter = null)
     {
         var queryble = _dbContext.Set<T>().AsQueryable();
 
-        if (filter?.Length == 0 && paginationFilter?.PageSize == 0 && paginationFilter?.PageNumber == 0)
+        if (String.IsNullOrEmpty(filter?.SearchName) && paginationFilter?.PageSize == 0 && paginationFilter?.PageNumber == 0)
             return await queryble.ToListAsync();
 
-        if (filter?.Length > 0)
-          queryble = await ApplyFilter(queryble, filter);
+        if (!String.IsNullOrEmpty(filter?.SearchName))
+          queryble = await ApplyFilter(queryble, filter.SearchName);
 
-        var orderBy = String.IsNullOrWhiteSpace(sort?.ColumnId) || String.IsNullOrWhiteSpace(sort?.Sort)
+        var orderBy = String.IsNullOrWhiteSpace(sort?.Column) || String.IsNullOrWhiteSpace(sort?.Sort)
             ? "City ASC"
-            : String.Concat(sort.ColumnId, " ", sort.Sort);
+            : String.Concat(sort.Column, " ", sort.Sort);
 
         var skip = (paginationFilter!.PageNumber - 1) * paginationFilter!.PageSize;
         
