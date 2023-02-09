@@ -38,19 +38,16 @@
 
 - Default preset :
 
-sort filter = "_ASC_".
+
+|Name         |Value     |
+|-------------|----------|
+|sort filter  | "_ASC_"  |
+|column filter| "_City_" |
+|page number  | 1        |
+|page size    | 50       |
+
   
   [View](#sort-view)
-
-column filter = "_City_"
- 
-   [View](#column-view)
-
-page number = 1.
-
-page size = 50.
-
- [View](#pagination-view)
 
 #### Addresses controller :
 - CRUD operations.
@@ -98,6 +95,7 @@ _In progress_
   clients unbroken and still achieve data consistency.
 - Cover API by unit tests.
 - Error handle could use some improvement , important because it makes it easier for the end users to use API it correctly.Makes easily find bugs and rise               maintainability.
+- Should implement Authentication, and Authorization in ASP.NET Web API.
 
 
 ## Screenshots
