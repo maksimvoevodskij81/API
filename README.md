@@ -20,8 +20,7 @@
 ###### 1.Clone this repository in your machine.
 ###### 2.You do not need input data cause project include data preset.(10 addresses) and database.sqlite file.
 ###### 3.You can use Swagger UI and Postman for testing API.
-###### https://localhost:7166/swagger/index.html
-
+ https://localhost:7166/swagger/index.html
 * [functions](#functions)
 ###### You don't need to authorise because this function isn't ready yet.
 ![Screenshot_20230209_035901](https://user-images.githubusercontent.com/61758319/217848793-63b312fa-034b-4f44-b46a-7af5b2416062.png)
@@ -30,14 +29,19 @@
 ###### Search by any property value, except Id.
 ###### Sort by any property name, ASC and DESC.
 ###### Setup pagination.
-###### Distance controller:
-##### Calculating distance between two waypoints.
+![Screenshot_20230209_040510](https://user-images.githubusercontent.com/61758319/217850310-4359492c-5ad2-4b0a-bed6-8b93d2664396.png)
+#### Distance controller:
+###### Calculating distance between two waypoints.
+![Screenshot_20230209_040654](https://user-images.githubusercontent.com/61758319/217850979-1d0cfbac-7ce7-4613-9f9a-979734ad710d.png)
 * [General info](#general-info)
 ###### Delivered endpoint documentation through a Swagger implementation.
 * [Default](#default)
- ###### sort filter "City ASC".
- ###### page number 1.
- ###### page size 50.
+ ###### sort filter = "City ASC".
+![Screenshot_20230209_041140](https://user-images.githubusercontent.com/61758319/217852231-51ad661d-08ac-4fb7-a3bc-44c4ac296643.png)
+ ###### page number = 1.
+ ###### page size = 50.
+![Screenshot_20230209_041157](https://user-images.githubusercontent.com/61758319/217852305-b7cefbdd-e8c4-43cf-ad83-074be4d174ef.png)
+
  * [strengths](#strengths)
  ###### Leveraged encapsulation between API backed data resources and application implementation details.
  ###### IAsyncRepository<T>  that is generic interface that is make work with database more flexible and reusable.
