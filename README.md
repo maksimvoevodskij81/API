@@ -4,9 +4,8 @@
 ###### Solution contains two project:
 ###### 1. TaskAPI. 
 ###### 2. BackendData library in Data folder.
-# Test
+ # Technologies
 ![Screenshot_20230209_033748](https://user-images.githubusercontent.com/61758319/217843639-9fd507e3-b5af-45b3-871a-1695caa7c086.png)
-* [Technologies](#technologies)
 ###### Visual Studio 2022.
 ###### .NET 6.
 ###### SwaggerUI.
