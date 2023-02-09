@@ -1,8 +1,10 @@
-  # TaskAPI that is REST API 
+  # TaskAPI that is .NET Web API 
+![Screenshot_20230209_034500](https://user-images.githubusercontent.com/61758319/217845307-674aa59e-76ef-4fc8-b429-16f8c0ab1f93.png)
 ###### That is API for working(CRUD operations) with addresses and besides that for calculating distance between waypoints.
 ###### Solution contains two project:
 ###### 1. TaskAPI. 
-###### 2. BackendData library.
+###### 2. BackendData library in Data folder.
+![Screenshot_20230209_033748](https://user-images.githubusercontent.com/61758319/217843639-9fd507e3-b5af-45b3-871a-1695caa7c086.png)
 * [Technologies](#technologies)
 ###### Visual Studio 2022.
 ###### .NET 6.
@@ -18,16 +20,19 @@
 ###### 1.Clone this repository in your machine.
 ###### 2.You do not need input data cause project include data preset.(10 addresses) and database.sqlite file.
 ###### 3.You can use Swagger UI and Postman for testing API.
+###### https://localhost:7166/swagger/index.html
+
 * [functions](#functions)
-##### Addresses controller:
+###### You don't need to authorise because this function isn't ready yet.
+![Screenshot_20230209_035901](https://user-images.githubusercontent.com/61758319/217848793-63b312fa-034b-4f44-b46a-7af5b2416062.png)
+#### Addresses controller:
 ###### CRUD operations.
 ###### Search by any property value, except Id.
 ###### Sort by any property name, ASC and DESC.
-###### Pagination.
-##### Distance controller:
-###### Calculating distance between two waypoints.
+###### Setup pagination.
+###### Distance controller:
+##### Calculating distance between two waypoints.
 * [General info](#general-info)
-###### You don't need to authorise because this function isn't ready yet.
 ###### Delivered endpoint documentation through a Swagger implementation.
 * [Default](#default)
  ###### sort filter "City ASC".
