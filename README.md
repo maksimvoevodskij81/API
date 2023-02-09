@@ -1,5 +1,4 @@
   # TaskAPI that is REST API 
-
 ###### That is API for working(CRUD operations) with addresses and besides that for calculating distance between waypoints.
 ###### Leveraged encapsulation between API backed data resources and application implementation details.
 ###### Solution contains two project:
