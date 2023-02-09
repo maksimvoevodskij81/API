@@ -85,21 +85,21 @@ page size = 50.
 _In progress_ 
 
 ## Strengths
- - Leveraged encapsulation between API backed data resources and application implementation details.
- - IAsyncRepository<T> that is generic interface that is make work with database more flexible and reusable.
+ - Leveraged encapsulation between API backed data resources and application implementation details, so made generic reusable component in separate project that is        rise reusability, testability and maintainability.
  - Generic functions OrderBy and ApplyFilter fit perfectly into the generic EfRepository class, thereby preserving the reusability of the class.
- - Working with resources implemented with async/await.
- - Implemented versioning.
- - Implemented Installer interface that made Program file cleaner.
- - Error handle model
+ - Working with resources implemented with async/await, increase the performance and responsiveness of API,
+   particularly when have long-running operations that do not require to block the execution.
+ - Implemented versioning, necessarily required so that Business changes in the API will not impact the client that are using/consuming the existing API.
+ - Implemented Installer interface that made Program file cleaner, and rise code comprehension.
  - Delivered endpoint documentation through a Swagger implementation.
 
-## Room for Improvement
+ ## Room for Improvement
 - Validation for requests should be more liberal so I will be able to accept all formats and just transform data to format what I exactly need that’s remain  
- clients unbroken and still achieve data consistency.
+  clients unbroken and still achieve data consistency.
 - Cover API by unit tests.
+- Error handle could use some improvement , important because it makes it easier for the end users to use API it correctly.Makes easily find bugs and rise               maintainability.
 
- 
+
 ## Screenshots
 #### Project folders view
 ![Screenshot_20230209_033748](https://user-images.githubusercontent.com/61758319/217843639-9fd507e3-b5af-45b3-871a-1695caa7c086.png)
