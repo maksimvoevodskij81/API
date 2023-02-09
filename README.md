@@ -2,14 +2,12 @@
  ## Table of Contents
 * [General Info](#general-information)
 * [Technologies Used](#technologies-used)
-* [Features](#features)
+* [Features and usage](#features-and-usage)
 * [Screenshots](#screenshots)
 * [Setup](#setup)
-* [Usage](#usage)
 * [Project Status](#project-status)
 * [Room for Improvement](#room-for-improvement)
-* [Acknowledgements](#acknowledgements)
-* [Contact](#contact)
+* [strengths](#strengths)
 
 ## General information
 - API for working with addresses(CRUD operations) and besides that calculated distance between waypoints by Google Maps Distance Matrix API.
@@ -33,10 +31,26 @@
 - Newtonsoft.Json Version="13.0.2".
 - Google Maps Distance Matrix API .
 
-## Features
+## Features and usage
 - You don't need to authorise because this function isn't ready yet.
 
    [View](#project-folders-view)
+
+- Default preset :
+
+sort filter = "_ASC_".
+  
+  [View](#sort-view)
+
+column filter = "_City_"
+ 
+   [View](#column-view)
+
+page number = 1.
+
+page size = 50.
+
+ [View](#pagination-view)
 
 #### Addresses controller :
 - CRUD operations.
@@ -66,9 +80,24 @@
    [View](#swagger-view)
 
 
-* [Key Features](#Key-Features)
+## Project Status
 
+_In progress_ 
 
+## Strengths
+ - Leveraged encapsulation between API backed data resources and application implementation details.
+ - IAsyncRepository<T>  that is generic interface that is make work with database more flexible and reusable.
+ - Working with resources implemented with async/await.
+ - Implemented versioning.
+ - Implemented Installer interface that made Program file cleaner.
+ - Error handle model
+ - Delivered endpoint documentation through a Swagger implementation.
+
+## Room for Improvement
+- Validation for requests should be more liberal so I will be able to accept all formats and just transform data to format what I exactly need that’s remain  
+ clients unbroken and still achieve data consistency.
+
+ 
 ## Screenshots
 #### Project folders view
 ![Screenshot_20230209_033748](https://user-images.githubusercontent.com/61758319/217843639-9fd507e3-b5af-45b3-871a-1695caa7c086.png)
@@ -92,31 +121,15 @@
 #### Swagger view
 ![Screenshot_20230209_034500](https://user-images.githubusercontent.com/61758319/217845307-674aa59e-76ef-4fc8-b429-16f8c0ab1f93.png)
 
-
-
-
-* [Default](#default)
- ###### sort filter = "ASC".
+#### Sort view
 ![Screenshot_20230209_041140](https://user-images.githubusercontent.com/61758319/217852231-51ad661d-08ac-4fb7-a3bc-44c4ac296643.png)
- ###### column filter = "City"
+
+#### Column view
  ![Screenshot_20230209_051021](https://user-images.githubusercontent.com/61758319/217870261-fb22a9fb-7ab2-4524-9d93-27bce1de6ff3.png)
 
- ###### page number = 1.
- ###### page size = 50.
+#### Pagination view
 ![Screenshot_20230209_041157](https://user-images.githubusercontent.com/61758319/217852305-b7cefbdd-e8c4-43cf-ad83-074be4d174ef.png)
 
- * [strengths](#strengths)
- ###### Leveraged encapsulation between API backed data resources and application implementation details.
- ###### IAsyncRepository<T>  that is generic interface that is make work with database more flexible and reusable.
- ###### Working with resources implemented with async/await.
- ###### Implemented versioning.
- ###### Implemented Installer interface that made Program file cleaner.
- Error handle model
- * [Should be improve](#should-be-improve)
- ###### Validation for requests should be more liberal so I will be able to accept all formats and just transform data to format what I exactly need that’s remain     ###### clients unbroken and still achieve data consistency.
- Delivered endpoint documentation through a Swagger implementation.
-
- 
  
 
  
