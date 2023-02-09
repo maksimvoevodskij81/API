@@ -44,13 +44,18 @@
 - Sort by any property name, ASC and DESC.
 - Setup pagination.
 
-   [View](#project-folders-view)
+   [View](#addresses-controller-view)
 
 
-![Screenshot_20230209_040510](https://user-images.githubusercontent.com/61758319/217850310-4359492c-5ad2-4b0a-bed6-8b93d2664396.png)
 #### Distance controller:
-###### Calculating distance between two waypoints.
-![Screenshot_20230209_040654](https://user-images.githubusercontent.com/61758319/217850979-1d0cfbac-7ce7-4613-9f9a-979734ad710d.png)
+- Calculating distance between two waypoints by Google Maps Distance Matrix API.(waypoints should be on the same continent)
+
+   [View](#distance-controller-view)
+   
+ - Response view
+ 
+   [View](#response-view)
+
 
 ## Screenshots
 #### Project folders view
@@ -62,6 +67,16 @@
 #### Setup pagination
 ![Screenshot_20230209_040510](https://user-images.githubusercontent.com/61758319/217850310-4359492c-5ad2-4b0a-bed6-8b93d2664396.png)
 
+#### Addresses controller view
+![Screenshot_20230209_040510](https://user-images.githubusercontent.com/61758319/217850310-4359492c-5ad2-4b0a-bed6-8b93d2664396.png)
+
+#### Distance controller view
+![Screenshot_20230209_040654](https://user-images.githubusercontent.com/61758319/217850979-1d0cfbac-7ce7-4613-9f9a-979734ad710d.png)
+![Screenshot_20230209_093910](https://user-images.githubusercontent.com/61758319/217934543-13571f8b-570f-4ed3-977d-753428732ee5.png)
+
+
+#### Response view
+![Screenshot_20230209_093942](https://user-images.githubusercontent.com/61758319/217934024-aeabf9a2-609e-4242-bf85-ecff2cc5eb9f.png)
 
 ![Screenshot_20230209_034500](https://user-images.githubusercontent.com/61758319/217845307-674aa59e-76ef-4fc8-b429-16f8c0ab1f93.png)
 
@@ -90,6 +105,7 @@
  ###### Working with resources implemented with async/await.
  ###### Implemented versioning.
  ###### Implemented Installer interface that made Program file cleaner.
+ Error handle model
  * [Should be improve](#should-be-improve)
  ###### Validation for requests should be more liberal so I will be able to accept all formats and just transform data to format what I exactly need that’s remain     ###### clients unbroken and still achieve data consistency.
  Delivered endpoint documentation through a Swagger implementation.
