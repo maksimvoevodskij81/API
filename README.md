@@ -86,7 +86,8 @@ _In progress_
 
 ## Strengths
  - Leveraged encapsulation between API backed data resources and application implementation details.
- - IAsyncRepository<T>  that is generic interface that is make work with database more flexible and reusable.
+ - IAsyncRepository<T> that is generic interface that is make work with database more flexible and reusable.
+ - Generic functions OrderBy and ApplyFilter fit perfectly into the generic EfRepository class, thereby preserving the reusability of the class.
  - Working with resources implemented with async/await.
  - Implemented versioning.
  - Implemented Installer interface that made Program file cleaner.
@@ -96,6 +97,7 @@ _In progress_
 ## Room for Improvement
 - Validation for requests should be more liberal so I will be able to accept all formats and just transform data to format what I exactly need that’s remain  
  clients unbroken and still achieve data consistency.
+- Cover API by unit tests.
 
  
 ## Screenshots
