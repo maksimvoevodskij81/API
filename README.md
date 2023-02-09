@@ -1,11 +1,44 @@
-  # .NET Web API 
-![Screenshot_20230209_034500](https://user-images.githubusercontent.com/61758319/217845307-674aa59e-76ef-4fc8-b429-16f8c0ab1f93.png)
-###### That is API for working with addresses(CRUD operations) and besides that calculat distance between waypoints.
-###### Solution contains two project:
-###### 1. TaskAPI. 
-###### 2. BackendData library in Data folder.
- # Technologies
+ # .NET Web API "_Addresses_"
+ ## Table of Contents
+* [General Info](#general-information)
+* [Technologies Used](#technologies-used)
+* [Features](#features)
+* [Screenshots](#screenshots)
+* [Setup](#setup)
+* [Usage](#usage)
+* [Project Status](#project-status)
+* [Room for Improvement](#room-for-improvement)
+* [Acknowledgements](#acknowledgements)
+* [Contact](#contact)
+
+## General information
+- API for working with addresses(CRUD operations) and besides that calculat distance between waypoints.
+-   Solution contains two project :  
+ 
+1. BackendData library in  Data folder.
+
+2. TaskAPI. 
+
+     [View](#project-folders-view)
+
+## Technologies Used
+- Visual Studio 2022.
+- .NET 6.
+- SwaggerUI.
+- Swashbuckle.AspNetCore Version="6.2.3".
+- Database: SQLite Version="3.13.0".
+- Microsoft.EntityFrameworkCore Version="7.0.2". 
+- AutoMapper Version="12.0.1".
+- Microsoft.AspNet.Mvc Version="5.2.9".
+- Newtonsoft.Json Version="13.0.2".
+- Google Maps Distance Matrix API .
+## Screenshots
+####  project folders view
 ![Screenshot_20230209_033748](https://user-images.githubusercontent.com/61758319/217843639-9fd507e3-b5af-45b3-871a-1695caa7c086.png)
+
+![Screenshot_20230209_034500](https://user-images.githubusercontent.com/61758319/217845307-674aa59e-76ef-4fc8-b429-16f8c0ab1f93.png)
+
+## Technologies Used
 ###### Visual Studio 2022.
 ###### .NET 6.
 ###### SwaggerUI.
