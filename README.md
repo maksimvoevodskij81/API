@@ -26,7 +26,7 @@
 ###### Delivered endpoint documentation through a Swagger implementation.
 
 * [Default](#default)
- ###### sort filter City ASC
+ ###### sort filter "City ASC"
  
 
 
