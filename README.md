@@ -1,6 +1,8 @@
   # TaskAPI that is REST API 
 
 ###### That is API for working(CRUD operations) with addresses and besides that for calculating distance between waypoints.
+
+###### Leveraged encapsulation between API backed data resources and application implementation details.
 ###### Solution contains two project:
 ###### 1. TaskAPI 
 ###### 2. BackendData library
@@ -21,4 +23,10 @@
 ###### 3.You can use Swagger UI and Postman for testing API.
 * [General info](#general-info)
 ###### You don't need to authorise because this function isn't ready yet.
+###### Delivered endpoint documentation through a Swagger implementation.
+
+* [Default](#default)
+###### sort filter **City ASC**
+
+
 
