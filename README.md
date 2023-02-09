@@ -55,6 +55,18 @@
  - Response view
  
    [View](#response-view)
+   
+## Setup
+- 1.Clone this repository in your machine.
+- 2.You do not need input data cause project include data preset.(10 addresses) and database.sqlite file.
+- 3.You can use Swagger UI and Postman for testing API.
+- Swagger UI address :          
+-             https://localhost:7166/swagger/index.html
+   
+   [View](#swagger-view)
+
+
+* [Key Features](#Key-Features)
 
 
 ## Screenshots
@@ -74,19 +86,13 @@
 ![Screenshot_20230209_040654](https://user-images.githubusercontent.com/61758319/217850979-1d0cfbac-7ce7-4613-9f9a-979734ad710d.png)
 ![Screenshot_20230209_093910](https://user-images.githubusercontent.com/61758319/217934543-13571f8b-570f-4ed3-977d-753428732ee5.png)
 
-
 #### Response view
 ![Screenshot_20230209_093942](https://user-images.githubusercontent.com/61758319/217934024-aeabf9a2-609e-4242-bf85-ecff2cc5eb9f.png)
 
+#### Swagger view
 ![Screenshot_20230209_034500](https://user-images.githubusercontent.com/61758319/217845307-674aa59e-76ef-4fc8-b429-16f8c0ab1f93.png)
 
 
-* [Setup](#setup)
-###### 1.Clone this repository in your machine.
-###### 2.You do not need input data cause project include data preset.(10 addresses) and database.sqlite file.
-###### 3.You can use Swagger UI and Postman for testing API.
- https://localhost:7166/swagger/index.html
-* [Key Features](#Key-Features)
 
 
 * [Default](#default)
