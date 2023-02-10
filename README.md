@@ -7,7 +7,7 @@
 * [Setup](#setup)
 * [Project Status](#project-status)
 * [Room for Improvement](#room-for-improvement)
-* [strengths](#strengths)
+* [Strengths](#strengths)
 
 ## General information
 - API for working with addresses(CRUD operations) and besides that calculated distance between waypoints by Google Maps Distance Matrix API.
@@ -104,9 +104,6 @@ _In progress_
 
 #### Authorisation button
 ![Screenshot_20230209_035901](https://user-images.githubusercontent.com/61758319/217848793-63b312fa-034b-4f44-b46a-7af5b2416062.png)
-
-#### Setup pagination
-![Screenshot_20230209_040510](https://user-images.githubusercontent.com/61758319/217850310-4359492c-5ad2-4b0a-bed6-8b93d2664396.png)
 
 #### Addresses controller view
 ![Screenshot_20230209_040510](https://user-images.githubusercontent.com/61758319/217850310-4359492c-5ad2-4b0a-bed6-8b93d2664396.png)
