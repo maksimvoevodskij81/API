@@ -1,5 +1,7 @@
 ﻿using BackendData;
 using BackendData.DataAccess;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI;
 using TaskAPI.Interfaces;
 using TaskAPI.Services;
 
@@ -13,6 +15,10 @@ namespace TaskAPI.Installers
             services.AddSqlite<AppDbContext>(connectionString);
             services.AddScoped(typeof(IAsyncRepository<>), typeof(EfRepository<>));
             services.AddScoped<IAddressService, AddressService>();
+            services.AddIdentityCore<IdentityUser>()
+                .AddDefaultUI()
+                .AddEntityFrameworkStores<AppDbContext>();
+
         }
     }
 }

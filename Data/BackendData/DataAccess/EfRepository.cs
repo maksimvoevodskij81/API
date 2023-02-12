@@ -60,7 +60,7 @@ public class EfRepository<T> : IAsyncRepository<T> where T : BaseEntity
 
         var parameter = Expression.Parameter(type);
         var leftHandSides = properties.Select(
-                x => Expression.Property(parameter, x));
+                x => Expression.Property(parameter, x!));
 
         var rightHandSide = Expression.Constant(filter);
 
