@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using TaskAPI.Contracts.V1;
 using TaskAPI.Contracts.V1.Requests;
@@ -10,6 +12,8 @@ using TaskAPI.Services;
 namespace TaskAPI.Controllers.V1
 {
     [Produces("application/json")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+
     public class DistanceController : ControllerBase
     {
         private readonly GoogleMapSettings _googleMapSettings;

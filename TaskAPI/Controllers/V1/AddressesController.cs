@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using BackendData.DomainModel;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TaskAPI.Contracts.V1;
 using TaskAPI.Contracts.V1.Requests;
@@ -13,6 +15,7 @@ using TaskAPI.Interfaces;
 namespace TaskAPI.Controllers.V1
 {
     [Produces("application/json")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class AddressesController : ControllerBase
     {
         private readonly IAddressService _addressService;

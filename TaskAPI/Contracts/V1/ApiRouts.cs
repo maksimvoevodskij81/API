@@ -21,5 +21,10 @@
         {
             public const string Index = Base + "/values";
         }
+        public static class Identity
+        {
+            public const string Login = Base + "/login";
+            public const string Register = Base + "/register";
+        }
     }
 }

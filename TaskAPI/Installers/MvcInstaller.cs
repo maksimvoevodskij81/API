@@ -24,10 +24,11 @@ namespace TaskAPI.Installers
                 x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer(x =>
             {
+                x.SaveToken = true;
                 x.TokenValidationParameters = new TokenValidationParameters()
                 {
                     ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(jwtSettings.Secret!)),
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(jwtSettings.Secret)),
                     ValidateIssuer = false,
                     ValidateAudience = false,
                     RequireExpirationTime = false,
@@ -37,7 +38,7 @@ namespace TaskAPI.Installers
             services.AddMvc(options => options.Filters.Add<ValidationFilter>());
             services.AddFluentValidationAutoValidation();
             services.AddValidatorsFromAssemblyContaining<ValidationFilter>();
-
+            services.AddScoped<IIdentityService, IdentityService>();
             services.AddControllers();
            
             services.AddHttpContextAccessor();
