@@ -116,7 +116,7 @@ _In progress_
 - Validation for requests should be more liberal so I will be able to accept all formats and just transform data to format what I exactly need that’s remain  
   clients unbroken and still achieve data consistency.
 - Cover API by unit tests.
-- Error handle could use some improvement , important because it makes it easier for the end users to use API it correctly.Makes easily find bugs and rise               maintainability.
+- Error handle could use some improvement, important because it makes it easier for the end users to use API  correctly.Makes easily find bugs and rise       maintainability.
 
 
 ## Screenshots
